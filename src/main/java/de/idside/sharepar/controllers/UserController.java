@@ -3,6 +3,7 @@ package de.idside.sharepar.controllers;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -43,5 +44,10 @@ public class UserController {
 	@DeleteMapping("/delete/{id}")
 	public void delete(@PathVariable("id") String id){
 		userService.delete(id);;
+	}
+	
+	@GetMapping("/findBy/{id}")
+	public Optional<User> findById(@PathVariable("id") String id) {
+		return this.userService.findById(id);
 	}
 }

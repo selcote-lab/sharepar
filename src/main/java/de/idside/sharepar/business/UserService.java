@@ -2,6 +2,7 @@ package de.idside.sharepar.business;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,6 +29,9 @@ public class UserService {
 
 	public void delete(String id) {
 		this.userDao.deleteById(id);
-		
+	}
+	
+	public Optional<User> findById(String id) {
+		return this.userDao.findById(id);
 	}
 }
