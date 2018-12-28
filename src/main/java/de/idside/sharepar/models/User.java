@@ -4,6 +4,7 @@ import java.util.Date;
 
 import javax.persistence.Id;
 
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "Users")
@@ -17,11 +18,14 @@ public class User extends ObjectAudit{
 	
 	private int age;
 	
+	@Indexed(unique=true)
 	private String email;
 	
 	private String password;
 	
 	private String status;
+	
+	private Boolean enabled = false;
 	
 	private Address address;
 	
@@ -71,12 +75,6 @@ public class User extends ObjectAudit{
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
-	}
 	
 	public Address getAddress() {
 		return address;
@@ -97,11 +95,6 @@ public class User extends ObjectAudit{
 	}
 
 
-	public void setId(String id) {
-		this.id = id;
-	}
-
-
 	public String getStatus() {
 		return status;
 	}
@@ -110,6 +103,18 @@ public class User extends ObjectAudit{
 	public void setStatus(String status) {
 		this.status = status;
 	}
+	
+
+
+	public Boolean getEnabled() {
+		return enabled;
+	}
+
+
+	public void setEnabled(Boolean enabled) {
+		this.enabled = enabled;
+	}
+	
 
 
 	@Override
